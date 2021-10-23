@@ -40,7 +40,7 @@ export default class MyElement extends LitElement {
 
     render() {
         return html`
-            <h1>Hello, ${this.name}!</h1>
+            <h1>Hello Pages, ${this.name}!</h1>
             <button @click=${this.onClick} part="button">
                 Click Count: ${this.count}
             </button>

@@ -21,6 +21,7 @@ const commonConfig = {
         filename: '[name].[fullhash].js',
         path: path.resolve(__dirname, 'dist'),
         //publicPath: '/' + dotenv.config().parsed.BASE_URL + '/',
+        publicPath: "/starterkit-webpack-lit/"
     },
     devServer: {
         hot: true,
