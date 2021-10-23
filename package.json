@@ -5,9 +5,9 @@
   "main": "index.html",
   "scripts": {
     "start": "webpack serve --open --env development",
-    "start2": "webpack-cli serve --config ./webpack.config.js --env development ",
     "build": "webpack --env production",
     "deploy": "gh-pages -d dist",
+    "deployghpages": "npm run build --env production --env ghpagesbuild & gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

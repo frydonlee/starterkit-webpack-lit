@@ -21,7 +21,7 @@ const commonConfig = {
         filename: '[name].[fullhash].js',
         path: path.resolve(__dirname, 'dist'),
         //publicPath: '/' + dotenv.config().parsed.BASE_URL + '/',
-        publicPath: "/starterkit-webpack-lit/"
+        // publicPath: "/starterkit-webpack-lit/"
     },
     devServer: {
         hot: true,
@@ -30,14 +30,7 @@ const commonConfig = {
             progress: true,
           },
         
-        //open: true,
-        // hot: true,
-        //openPage: dotenv.config().parsed.BASE_URL + '/',
-        //contentBase: './dist',
-        //publicPath: '/' + dotenv.config().parsed.BASE_URL + '/',
-        // historyApiFallback: {
-        //     index: '/' + dotenv.config().parsed.BASE_URL + '/',
-        // },
+
     },
 }
 
@@ -46,10 +39,22 @@ const productionConfig = {
     devtool: 'source-map',
 }
 
+const ghpagesProductionConfig = {
+    mode: 'production',
+    devtool: 'source-map',
+
+    output: {
+        publicPath: "/starterkit-webpack-lit/"
+    },
+}
+
 const developmentConfig = {
     mode: 'development',
     devtool: 'eval-source-map',
 }
+
+
+
 
 module.exports = (env) => {
     console.log('webpack config : env: ', env)
@@ -62,6 +67,12 @@ module.exports = (env) => {
 
     if (env.production)
     {
+        if(env.ghpagesbuild)
+        {
+            console.log('webpack config : export ghpagesProduction configuration')
+            return merge(commonConfig, ghpagesProductionConfig)
+        }
+        
         console.log('webpack config : export production configuration')
         return merge(commonConfig, productionConfig)
     }
