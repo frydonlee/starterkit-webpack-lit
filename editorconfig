@@ -1,0 +1,24 @@
+# Editor configuration, see https://editorconfig.org
+
+# default
+# root = true
+
+# [*]
+# indent_style = space
+# indent_size = 4
+# charset = utf-8
+# trim_trailing_whitespace = false
+# insert_final_newline = false
+
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false

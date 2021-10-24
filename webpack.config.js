@@ -1,4 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
 
 const path = require('path')
@@ -6,15 +6,13 @@ const path = require('path')
 const commonConfig = {
     entry: './src/index.js',
     module: {
-        rules: [
-            
-        ],
+        rules: [],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Hello From HtmlWebpackPlugin",
-            BASE_URL: "APP",
-            template: 'src/index.html'
+            title: 'Hello From HtmlWebpackPlugin',
+            BASE_URL: 'APP',
+            template: 'src/index.html',
         }),
     ],
     output: {
@@ -27,7 +25,7 @@ const commonConfig = {
         open: true,
         client: {
             progress: true,
-          },
+        },
     },
 }
 
@@ -41,7 +39,7 @@ const ghpagesProductionConfig = {
     devtool: 'source-map',
 
     output: {
-        publicPath: "/starterkit-webpack-lit/"
+        publicPath: '/starterkit-webpack-lit/',
     },
 }
 
@@ -50,24 +48,22 @@ const developmentConfig = {
     devtool: 'eval-source-map',
 }
 
-
 module.exports = (env) => {
     console.log('webpack config : env: ', env)
 
-    if (env.development)
-    {
+    if (env.development) {
         console.log('webpack config : export development configuration')
         return merge(commonConfig, developmentConfig)
     }
 
-    if (env.production)
-    {
-        if(env.ghpagesbuild)
-        {
-            console.log('webpack config : export ghpagesProduction configuration')
+    if (env.production) {
+        if (env.ghpagesbuild) {
+            console.log(
+                'webpack config : export ghpagesProduction configuration',
+            )
             return merge(commonConfig, ghpagesProductionConfig)
         }
-        
+
         console.log('webpack config : export production configuration')
         return merge(commonConfig, productionConfig)
     }
