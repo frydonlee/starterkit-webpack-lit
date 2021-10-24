@@ -20,8 +20,7 @@ const commonConfig = {
     output: {
         filename: '[name].[fullhash].js',
         path: path.resolve(__dirname, 'dist'),
-        //publicPath: '/' + dotenv.config().parsed.BASE_URL + '/',
-        // publicPath: "/starterkit-webpack-lit/"
+        clean: true,
     },
     devServer: {
         hot: true,
@@ -29,8 +28,6 @@ const commonConfig = {
         client: {
             progress: true,
           },
-        
-
     },
 }
 
@@ -52,8 +49,6 @@ const developmentConfig = {
     mode: 'development',
     devtool: 'eval-source-map',
 }
-
-
 
 
 module.exports = (env) => {
