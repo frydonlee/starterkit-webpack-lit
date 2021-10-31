@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { merge } = require('webpack-merge')
-
+const dotenv = require('dotenv')
 const path = require('path')
 
 const commonConfig = {
@@ -10,9 +10,9 @@ const commonConfig = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Hello From HtmlWebpackPlugin',
-            BASE_URL: 'APP',
+            title: dotenv.config().parsed.title,
             template: 'src/index.html',
+            base: dotenv.config().parsed.base,
         }),
     ],
     output: {
@@ -32,15 +32,31 @@ const commonConfig = {
 const productionConfig = {
     mode: 'production',
     devtool: 'source-map',
+
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: dotenv.config().parsed.title,
+            template: 'src/index.html',
+            base: dotenv.config().parsed.base,
+        }),
+    ],
 }
 
 const ghpagesProductionConfig = {
     mode: 'production',
     devtool: 'source-map',
 
-    output: {
-        publicPath: '/starterkit-webpack-lit/',
-    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: dotenv.config().parsed.title,
+            template: 'src/index.html',
+            base: dotenv.config().parsed.base_ghpages,
+        }),
+    ],
+
+    // output: {
+    //     publicPath: '/starterkit-webpack-lit/',
+    // },
 }
 
 const developmentConfig = {
